@@ -14,11 +14,11 @@
 
 | 이름 | 용도 | PublicIP | PrivateIP | ID/PW |
 | --- | --- | --- | --- | --- |
-| 임소희 | Proxy | 10.1.0.230 | 10.199.107.230 | root/P@ssw0rd |
+| LIM | Proxy | 10.1.0.230 | 10.199.107.230 | root/P@ssw0rd |
 |  | Nexus | 10.1.0.233 | 10.199.107.233 | root/P@ssw0rd |
-| 민형기 | Proxy | 10.1.0.231 | 10.199.107.231 | root/P@ssw0rd |
+| MIN | Proxy | 10.1.0.231 | 10.199.107.231 | root/P@ssw0rd |
 |  | Nexus | 10.1.0.234 | 10.199.107.234 | root/P@ssw0rd |
-| 이현수 | Proxy | 10.1.0.232 | 10.199.107.232 | root/P@ssw0rd |
+| LEE | Proxy | 10.1.0.232 | 10.199.107.232 | root/P@ssw0rd |
 |  | Nexus | 10.1.0.23 | 10.199.107.235 | root/P@ssw0rd |
 
 ## Proxy Server
