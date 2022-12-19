@@ -10,7 +10,7 @@
 10.1.0.251	gitlab.apps.ocp4.example.io console-openshift-console.apps.ocp4.example.io oauth-openshift.apps.ocp4.example.io
 ```
 
-### 개인환경
+### Server 개인환경
 
 | 이름 | 용도 | PublicIP | PrivateIP | ID/PW |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,43 @@
 | MIN | Proxy | 10.1.0.231 | 10.199.107.231 | root/P@ssw0rd |
 |  | Nexus | 10.1.0.234 | 10.199.107.234 | root/P@ssw0rd |
 | LEE | Proxy | 10.1.0.232 | 10.199.107.232 | root/P@ssw0rd |
-|  | Nexus | 10.1.0.23 | 10.199.107.235 | root/P@ssw0rd |
+|  | Nexus | 10.1.0.235 | 10.199.107.235 | root/P@ssw0rd |
+| PARK | Proxy | 10.1.0.236 | 10.199.107.236 | root/P@ssw0rd |
+|  | Nexus | 10.1.0.237 | 10.199.107.237 | root/P@ssw0rd |
+
+### Gitlab 개인환경
+
+| 이름 | ID | PW | URL |
+| --- | --- | --- | --- |
+| LEE | ct01 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
+| MIN | ct02 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
+| LEE | ct03 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
+| PARK | ct04 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
+
+### OCP 개인환경
+
+| 이름 | ID | PW | URL |
+| --- | --- | --- | --- |
+| LEE | ct01 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
+| MIN | ct02 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
+| LEE | ct03 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
+| PARK | ct04 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
+
+### Sample Git Sorce(Proxy or Nexus서버에서)
+
+```bash
+$ git clone http://gitlab.apps.ocp4.example.io/example/example-tomcat-war.git
+$ cd ./example-tomcat-war
+$ git init
+$ git remote -v
+$ git remote remote origin
+$ git remote add http://gitlab.apps.ocp4.example.io/{ID}/example-tomcat-war.git
+$ git add .
+$ git commit -m "cicd Test"
+$ git push --set-upstream origin master
+id: {id입력}
+paswword: {password 입력}
+```
 
 ## Proxy Server
 
