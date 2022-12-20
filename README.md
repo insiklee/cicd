@@ -27,7 +27,7 @@
 
 | 이름 | ID | PW | URL |
 | --- | --- | --- | --- |
-| LEE | ct01 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
+| LIM | ct01 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
 | MIN | ct02 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
 | LEE | ct03 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
 | PARK | ct04 | P@ssw0rd | http://gitlab.apps.ocp4.example.io/ |
@@ -36,7 +36,7 @@
 
 | 이름 | ID | PW | URL |
 | --- | --- | --- | --- |
-| LEE | ct01 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
+| LIM | ct01 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
 | MIN | ct02 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
 | LEE | ct03 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
 | PARK | ct04 | P@ssw0rd | https://console-openshift-console.apps.ocp4.example.io/ |
@@ -55,6 +55,90 @@ $ git commit -m "cicd Test"
 $ git push --set-upstream origin master
 id: {id입력}
 paswword: {password 입력}
+```
+
+### pom.xml 수정
+
+As-Is
+
+```bash
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example.app</groupId>
+  <artifactId>SimpleTomcatWebApp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SimpleTomcatWebApp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>SimpleTomcatWebApp</finalName>
+  </build>
+```
+
+To-Be
+
+```bash
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example.app</groupId>
+  <artifactId>SimpleTomcatWebApp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SimpleTomcatWebApp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+<!-- 리모트 원격 저장소 추가 시작 -->
+  <repositories>
+      <repository>
+          <id>public</id>
+          <name>maven central mirror Repository</name>
+          <layout>default</layout>
+          <url>http://10.1.0.251:8081/repositroy/maven-public/</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+  </repositories>
+<!-- 리모트 원격 저장소 추가 끝 -->
+<!-- 리모트 프러그인 저장소 추가 시작 -->
+  <pluginRepositories>
+      <pluginRepository>
+          <!-- id 는 central 이어야 함 -->
+          <id>central</id>
+          <name>Maven Plugin Repository</name>
+          <url>http://10.1.0.251:8081/repository/maven-central/</url>
+          <layout>default</layout>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+          <releases>
+              <updatePolicy>never</updatePolicy>
+          </releases>
+      </pluginRepository>
+  </pluginRepositories>
+<!-- 리모트 프러그인 저장소 추가 시작 -->
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>SimpleTomcatWebApp</finalName>
+  </build>
+</project>
 ```
 
 ## Proxy Server
